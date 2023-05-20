@@ -28,9 +28,9 @@ After executing the deploy command and everything completed successfully, you
 should see an active cloud funtion and the external connection plus table with 
 routine in BigQuery.
 
-![img](img/cloud_functions.png)
+![cloud function example](img/cloud_functions.png)
 
-![img](img/bq-datasets.png)
+<img src="img/bq-datasets.png"  width="30%">
 
 ## Run a Big Query job to get streamflow data
 
@@ -50,7 +50,7 @@ FROM
 
 If you plot the results, you should be able to see the following results:
 
-![img](img/streamflow_ts.png)
+![streamflow timeseries example](img/streamflow_ts.png)
 
 ## Acknowledgements
 
