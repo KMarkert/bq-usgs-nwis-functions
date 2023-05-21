@@ -44,13 +44,25 @@ SELECT
   usgs_nwis.get_streamflow('11425500', time) as streamflow
 FROM
   UNNEST( 
-    GENERATE_DATE_ARRAY(DATE('1980-01-01'), DATE('2020-02-01'), INTERVAL 1 DAY) 
+    GENERATE_DATE_ARRAY(DATE('1980-01-01'), DATE('2020-12-31'), INTERVAL 1 DAY) 
   ) AS time
 ```
 
 If you plot the results, you should be able to see the following results:
 
 ![streamflow timeseries example](img/streamflow_ts.png)
+
+To run a query with multiple sites:
+
+```
+SELECT
+  time,
+  site,
+  NULLIF(usgs_nwis.get_streamflow(site, time), -999999.0) AS streamflow
+FROM
+  UNNEST ( ['11425500', '11446500']) AS site,
+  UNNEST( GENERATE_DATE_ARRAY(DATE('1980-01-01'), DATE('2022-12-31'), INTERVAL 1 DAY) ) AS time
+```
 
 ## Acknowledgements
 
